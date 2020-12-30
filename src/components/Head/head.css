@@ -1,0 +1,39 @@
+.log-in-link-btn {
+  color: #000000 !important;
+  width: 120px;
+}
+.log-in-link-btn:hover{
+  border-color: #fff;
+  color: #fff !important;
+}
+.log-in-link{
+  text-decoration: none;
+}
+.log-in-link:hover{
+  background-color: #316ddb;
+}
+.nav {
+  justify-content: space-between;
+}
+.nav-link {
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.4s;
+}
+.nav-link:hover{
+  background-color: #316ddb;
+}
+.nav-elems {
+  display: flex;
+  width: 18%;
+  justify-content: space-between;
+}
+.nav-link-btn {
+  font-size: 17px !important;
+  width: 120px;
+  transition: color 0.4s;
+}
+.nav-link-btn:hover{
+  color: #fff;
+  border-color: #fff !important;
+}

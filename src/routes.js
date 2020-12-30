@@ -1,5 +1,6 @@
-import { BaseRedux } from 'containers/BaseContainer'
-import { LoginForm } from 'components/loginForm'
+import { BaseRedux } from 'containers/BaseContainer';
+import { loginRedux } from 'containers/loginContainer';
+import { News } from 'components/news'
 
 export const routes = [
   
@@ -11,6 +12,11 @@ export const routes = [
   {
     path: '/login',
     exact: true,
-    component: LoginForm
+    component: loginRedux
+  },
+  {
+    path: '/news',
+    exact: true,
+    component: News
   }
 ]

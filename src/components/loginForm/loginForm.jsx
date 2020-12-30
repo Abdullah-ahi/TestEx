@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import './loginForm.css'
+import './loginForm.css';
+
+import { Link } from 'react-router-dom';
 
 export class LoginForm extends Component {
   state = {
     login: '',
-    password: ''
+    password: '',
   }
 
-  checkName = (name) => {
+  checkLogin = (login) => {
     let result;
-    if (name){
-      if (name.match(/[a-z]/gi) === null){
+    if (login){
+      if (login.match(/[a-z]/gi) === null){
         result = false;
       }else{
-        result = name === name.match(/[a-z]/gi).join('');
+        result = login === login.match(/[a-z]/gi).join('');
       }
       return result;
     }else{
@@ -44,20 +46,56 @@ export class LoginForm extends Component {
       [fieldName]: event.target.value
     })
   }
+
   handleLogin = () => {
     const { login, password } = this.state
-    if (!this.checkPassword(password)){
-      console.log(false)
+    const { SignIn } = this.props
+
+    if (!this.checkPassword(password) || !this.checkLogin(login)){
+      this.handleLoginErrors(login, password)
     }else{
-      console.log(true)
+      if(document.querySelector('.format-error')){
+        document.querySelector('.format-error').remove()
+      }
+      SignIn(this.state)
     }
   }
+
+  handleLoginErrors = (login, password) => {
+    if(document.querySelector('.format-error')){
+      document.querySelector('.format-error').remove()
+    }
+    const error = document.createElement('div')
+    error.classList.add('format-error')
+    document.querySelector('.login-form').append(error)
+
+    if(!this.checkPassword(password) && !this.checkLogin(login)){
+      error.textContent = 'Неверный формат данных';
+    }else if (!this.checkPassword(password) && this.checkLogin(login)){
+      error.textContent = 'Неверный формат пароля';
+    }else{
+      error.textContent = 'Неверный формат логина'
+    }
+  }
+  checkLinkPath = (login, password) => {
+    let result;
+    if (!this.checkLogin(login) || !this.checkPassword(password)){
+      result =  false
+    }else{
+      result =  true
+    }
+    return result
+  }
+  
   render(){
+    const { login, password } = this.state
     return(
       <div className="login-form">
         <TextField name="login" onChange={this.handleInputChange} className="text-input login" id="standard-required" label="Login"/>
         <TextField name="password" onChange={this.handleInputChange} className="text-input password" id="standard-password-input" label="Password" type="password" autoComplete="current-password"/>
-        <Button onClick={this.handleLogin} className="login-btn" variant="outlined" color="primary">LOGIN</Button>
+        <Link to={!this.checkLinkPath(login, password) ? () => {return} : '/'} className="login-link">
+          <Button onClick={this.handleLogin} className="login-btn" variant="outlined" color="primary">LOGIN</Button>
+        </Link>
       </div>
     )
   }

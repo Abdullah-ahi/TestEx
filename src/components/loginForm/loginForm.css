@@ -32,6 +32,13 @@ body{
 .password {
   margin-bottom: 3px !important;
 }
-.login-btn{
+.login-link{
   width: 21%;
+  text-decoration: none;
+}
+.login-btn{
+  width: 100%;
+}
+.format-error{
+  color: red;
 }
