@@ -11,18 +11,6 @@ export class Profile extends Component {
     tel: '',
     InputIsVisible: false,
   }
-  componentDidMount(){
-    const telAddBtn = document.querySelector('.show-input-btn')
-    const DomTel = document.querySelector('.login-tel')
-
-    if(DomTel){
-      if (DomTel.textContent.length > 0){
-        telAddBtn.textContent = 'Изменить номер'
-      }
-    }else{
-      return
-    }
-  }
 
   handleAddTel = () => {
     const { SignIn, Login } = this.props
@@ -32,8 +20,6 @@ export class Profile extends Component {
         document.querySelector('.format-error').remove()
       }
       SignIn(this.state)
-      const telAddBtn = document.querySelector('.show-input-btn')
-      telAddBtn.textContent = 'Изменить номер'
       this.setState({
         InputIsVisible: false,
       })
@@ -91,7 +77,7 @@ export class Profile extends Component {
         <div className="profile-info">
           <h1>{Login.login}</h1>
           <h2 className="login-tel">{Login.tel}</h2>
-          <Button onClick={this.showInput} className="show-input-btn" variant="outlined" color="inherit">Добавить номер</Button>
+          <Button onClick={this.showInput} className="show-input-btn" variant="outlined" color="inherit">{Login.tel ? 'Изменить телефон' : 'Добавить телефон'}</Button>
           <Input name="tel" onChange={this.handleInputChange} type="tel" placeholder="+7-999-826-3596" variant="outlined" multiline={false}  className={inputClasses}></Input>
           <Button onClick={this.handleAddTel} className={BtnClasses} variant="outlined" color="inherit">Добавить</Button>
         </div> 

@@ -33,6 +33,23 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
+      },
+      {
+        test: /\.(gltf)$/,
+          use: [
+            {
+              loader: "gltf-webpack-loader"
+            }
+          ]
+      },
+      {
+        test: /\.(bin)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       }
     ]
   },

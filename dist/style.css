@@ -1,3 +1,42 @@
+.log-in-link-btn {
+  color: #000000 !important;
+  width: 120px;
+}
+.log-in-link-btn:hover{
+  border-color: #fff;
+  color: #fff !important;
+}
+.log-in-link{
+  text-decoration: none;
+}
+.log-in-link:hover{
+  background-color: #316ddb;
+}
+.nav {
+  justify-content: space-between;
+}
+.nav-link {
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.4s;
+}
+.nav-link:hover{
+  background-color: #316ddb;
+}
+.nav-elems {
+  display: flex;
+  width: 18%;
+  justify-content: space-between;
+}
+.nav-link-btn {
+  font-size: 17px !important;
+  width: 120px;
+  transition: color 0.4s;
+}
+.nav-link-btn:hover{
+  color: #fff;
+  border-color: #fff !important;
+}
 body{
   margin: 0;
 }
@@ -32,7 +71,64 @@ body{
 .password {
   margin-bottom: 3px !important;
 }
-.login-btn{
+.login-link{
   width: 21%;
+  text-decoration: none;
+}
+.login-btn{
+  width: 100%;
+}
+.format-error{
+  color: red;
 }
 
+.profile-info-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  opacity: 0.9;
+  height: 100vh;
+}
+.profile-info {
+  width: 30%;
+  height: 90vh;
+  background-color: #2F4F4F;
+  text-align: center;
+  color: #fff;
+}
+.log-out-message{
+  color: #fff;
+}
+.log-out-block{
+  text-align: center;
+}
+.log-out-block-link{
+  text-decoration: none;
+}
+.log-out-block-btn:hover{
+  background-color: #fff !important;
+  color: #000000;
+}
+.log-out-block-btn{
+  margin: 0 auto !important;
+}
+.tel{
+  width: 36%;
+  margin: 0 auto 10px;
+}
+.tel input {
+  padding: 0 15px 0 15px;
+  box-sizing: border-box;
+}
+.show{
+  display: block !important;
+}
+.hide {
+  display: none !important;
+}
+.show-input-btn{
+  font-size: 10px !important;
+  margin-bottom: 20px !important;
+}
