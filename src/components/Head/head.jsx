@@ -21,6 +21,14 @@ export class Head extends Component {
     renderer.domElement.setAttribute('id', 'super-car');
     document.querySelector('main').append(renderer.domElement)
 
+    window.addEventListener('resize', function(){
+      const width = window.innerWidth - 17;
+      const height = window.innerHeight - 63.4;
+      renderer.setSize(width, height)
+      camera.aspect = width / height
+      camera.updateProjectionMatrix()
+    })
+
     const aLight = new THREE.AmbientLight(0x404040, 1.2);
     scene.add(aLight);
 
