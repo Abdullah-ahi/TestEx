@@ -4,6 +4,8 @@ import { Button } from '@material-ui/core';
 import './loginForm.css';
 
 import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 export class LoginForm extends Component {
   state = {
@@ -89,13 +91,38 @@ export class LoginForm extends Component {
   
   render(){
     const { login, password } = this.state
+    const { Login } = this.props
     return(
-      <div className="login-form">
-        <TextField name="login" onChange={this.handleInputChange} className="text-input login" id="standard-required" label="Login"/>
-        <TextField name="password" onChange={this.handleInputChange} className="text-input password" id="standard-password-input" label="Password" type="password" autoComplete="current-password"/>
-        <Link to={!this.checkLinkPath(login, password) ? () => {return} : '/'} className="login-link">
-          <Button onClick={this.handleLogin} className="login-btn" variant="outlined" color="primary">LOGIN</Button>
-        </Link>
+      <div>
+        <header>
+          <AppBar position="static" className="MY CLASS">
+            <Toolbar className="nav">
+              <div className="nav-elems">
+                <Link to='/' className="nav-link">
+                  <Button className="nav-link-btn" variant="outlined">Head</Button>
+                </Link>
+                <Link to='/news' className="nav-link">
+                  <Button className="nav-link-btn" variant="outlined">News</Button>
+                </Link>
+              </div>
+              {Login.login ? 
+              <Link to='/profile' className="log-in-link">
+                <Button className="log-in-link-btn" variant="outlined" color="inherit">Profile</Button>
+              </Link> :
+              <Link to='/login' className="log-in-link">
+                <Button className="log-in-link-btn" variant="outlined" color="inherit">LOG IN</Button>
+              </Link>
+              }
+            </Toolbar>
+          </AppBar>
+        </header>
+        <div className="login-form">
+          <TextField name="login" onChange={this.handleInputChange} className="text-input login" id="standard-required" label="Login"/>
+          <TextField name="password" onChange={this.handleInputChange} className="text-input password" id="standard-password-input" label="Password" type="password" autoComplete="current-password"/>
+          <Link to={!this.checkLinkPath(login, password) ? () => {return} : '/'} className="login-link">
+            <Button onClick={this.handleLogin} className="login-btn" variant="outlined" color="primary">LOGIN</Button>
+          </Link>
+        </div>
       </div>
     )
   }

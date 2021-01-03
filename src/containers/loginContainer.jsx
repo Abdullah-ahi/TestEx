@@ -6,16 +6,17 @@ import { signIn } from 'actions'
 class loginContainer extends PureComponent {
 
   render(){
-    const { SignIn } = this.props
+    const { SignIn, loginData } = this.props
     return (
-      <LoginForm SignIn={SignIn}/>
+      <LoginForm SignIn={SignIn} Login={loginData}/>
     )
   }
 }
 
 function mapStateToProps(state, ownProps){
+  const loginData = state.data.getIn(['entries', 'profile']).toJS()
   return{
-
+    loginData
   }
 }
 

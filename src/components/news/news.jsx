@@ -12,7 +12,8 @@ export class News extends Component {
   componentDidMount(){
     let apiKey = '4e016d415a11418d81892362337c0730';
     function getNews(){
-      const imgPlug = "https://techcrunch.com/wp-content/uploads/2019/01/GettyImages-958125096.jpg?w=600"
+      const imgPlug = "https://techcrunch.com/wp-content/uploads/2019/01/GettyImages-958125096.jpg?w=600";
+
       fetch(`https://newsapi.org/v2/everything?q=auto industry&apiKey=${apiKey}`)
       .then(res => res.json())
       .then(data => {
@@ -50,6 +51,7 @@ export class News extends Component {
     getNews()
   }
   render(){
+    const { Login } = this.props
     return(
       <div>
         <header>
@@ -63,6 +65,14 @@ export class News extends Component {
                   <Button className="nav-link-btn" variant="outlined">News</Button>
                 </Link>
               </div>
+              {Login.login ? 
+              <Link to='/profile' className="log-in-link">
+                <Button className="log-in-link-btn" variant="outlined" color="inherit">Profile</Button>
+              </Link> :
+              <Link to='/login' className="log-in-link">
+                <Button className="log-in-link-btn" variant="outlined" color="inherit">LOG IN</Button>
+              </Link>
+              }
             </Toolbar>
           </AppBar>
         </header>
